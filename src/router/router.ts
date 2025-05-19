@@ -11,13 +11,3 @@ export function router(root: HTMLElement) {
         location.hash = '#/login';
     }
 }
-
-window.addEventListener('hashchange', () => {
-    const root = document.getElementById('app')!;
-    router(root);
-});
-
-window.addEventListener('load', () => {
-    const root = document.getElementById('app')!;
-    router(root);
-});
