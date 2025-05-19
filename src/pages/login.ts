@@ -24,8 +24,10 @@ export function renderLoginPage(root: HTMLElement) {
         <input type="checkbox" id="toggle-password" /> Show password
       </label>
 
-      <button type="submit">Login</button>
+      <button type="submit" class="login-btn">Login</button>
     </form>
+
+    <button id="to-registration" class="link-button">Go to Registration</button>
   `;
 
   const emailInput = document.getElementById('email') as HTMLInputElement;
@@ -33,6 +35,7 @@ export function renderLoginPage(root: HTMLElement) {
   const emailError = document.getElementById('email-error')!;
   const passwordError = document.getElementById('password-error')!;
   const togglePassword = document.getElementById('toggle-password') as HTMLInputElement;
+  const toRegistrationBtn = document.getElementById('to-registration')!;
 
   emailInput.addEventListener('input', () => {
     emailInput.classList.remove('invalid');
@@ -70,5 +73,9 @@ export function renderLoginPage(root: HTMLElement) {
       emailError.textContent = emailValid.error;
       passwordError.textContent = passwordValid.error;
     }
+  });
+
+  toRegistrationBtn.addEventListener('click', () => {
+    location.hash = '#/registration';
   });
 }
