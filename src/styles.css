@@ -57,3 +57,12 @@ button:hover {
     height: 14px;
     margin-top: 4px;
 }
+
+input.invalid {
+    border-color: red;
+}
+
+.error::before {
+    content: '⚠️ ';
+    margin-right: 4px;
+}

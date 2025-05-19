@@ -12,6 +12,5 @@ export function validatePassword(password: string): { valid: boolean, error: str
     if (!/[A-Z]/.test(trimmed)) errors.push('1 uppercase letter');
     if (!/[a-z]/.test(trimmed)) errors.push('1 lowercase letter');
     if (!/[0-9]/.test(trimmed)) errors.push('1 digit');
-    // if (!/[!@#$%^&*]/.test(trimmed)) errors.push('1 special char');
     return errors.length > 0 ? { valid: false, error: errors.join(', ') } : { valid: true, error: '' };
 }
