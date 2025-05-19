@@ -1,8 +1,13 @@
 import { validateEmail, validatePassword } from '../utils/validators';
 import { loginCustomer } from '../api/commercetools';
-import { setToken } from '../state/auth';
+import { setToken, isAuthenticated } from '../state/auth';
 
 export function renderLoginPage(root: HTMLElement) {
+  if (isAuthenticated()) {
+    location.hash = '#/main';
+    return;
+  }
+
   root.innerHTML = `
     <form id="login-form">
       <label>Email:
