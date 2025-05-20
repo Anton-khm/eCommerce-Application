@@ -3,7 +3,7 @@ const CLIENT_ID = 'ZYsj4Vcrf-UVbT9Unjup62Zq';
 const CLIENT_SECRET = 'fnWmoSnPKdd7qlPHKLze0jKa7TDbDHOX';
 const AUTH_HOST = 'https://auth.europe-west1.gcp.commercetools.com';
 const API_HOST = 'https://api.europe-west1.gcp.commercetools.com';
-const SCOPE = `manage_customers:${PROJECT_KEY} manage_my_profile:${PROJECT_KEY} manage_my_orders:${PROJECT_KEY}`;
+const SCOPE = `manage_customers:${PROJECT_KEY} view_published_products:${PROJECT_KEY} manage_my_orders:${PROJECT_KEY} manage_my_profile:${PROJECT_KEY}`;
 
 function getBasicAuthHeader(): string {
     return 'Basic ' + btoa(`${CLIENT_ID}:${CLIENT_SECRET}`);
@@ -23,7 +23,36 @@ export async function registerCustomer(customerData: any): Promise<any> {
 
     const data = await response.json();
     if (!response.ok) {
-        throw new Error(data.message || 'Registration failed');
+        if (data.errors) {
+            const formattedErrors = data.errors.map((e: any) => {
+                switch (e.code) {
+                    case 'InvalidJsonInput':
+                        return {
+                            ...e,
+                            userMessage: 'Incorrect data. Check if the input is correct.'
+                        };
+                    case 'DuplicateField':
+                        return {
+                            ...e,
+                            userMessage: e.field === 'email'
+                                ? 'This email is already registered. Please log in or use another.'
+                                : 'This value is already in use. Please enter another one.'
+                        };
+                    case 'InvalidField':
+                        return {
+                            ...e,
+                            userMessage: `Field ${e.field} is filled in incorrectly.`
+                        };
+                    default:
+                        return {
+                            ...e,
+                            userMessage: 'An error has occurred. Please try again later.'
+                        };
+                }
+            });
+            throw { errors: formattedErrors };
+        }
+        throw data;
     }
     return data;
 }

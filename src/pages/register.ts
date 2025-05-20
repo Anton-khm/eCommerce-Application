@@ -95,28 +95,27 @@ export function renderRegisterPage(root: HTMLElement) {
                         } else if (err.code === 'InvalidField') {
                             showError(err.field, err.message || 'Invalid field input.');
                         } else {
-                            showError('general', '⚠️ An unexpected error occurred. Please try again later.');
+                            showError('general', '⚠️ Check that data is correct');
                         }
                     }
                 } else {
                     showError('general', '⚠️ Failed to register. Please try again later.');
                 }
             }
-
-            function showError(field: string, message: string) {
-                const target = document.getElementById(`${field}-error`);
-                if (target) {
-                    target.textContent = message;
-                    target.classList.add('error');
-                    const input = document.getElementById(field) as HTMLInputElement;
-                    if (input) input.classList.add('invalid');
-                } else {
-                    const general = document.createElement('div');
-                    general.className = 'error';
-                    general.textContent = message;
-                    form.appendChild(general);
-                }
-            }
         }
     });
+    function showError(field: string, message: string) {
+        const target = document.getElementById(`${field}-error`);
+        if (target) {
+            target.textContent = message;
+            target.classList.add('error');
+            const input = document.getElementById(field) as HTMLInputElement;
+            if (input) input.classList.add('invalid');
+        } else {
+            const general = document.createElement('div');
+            general.className = 'error';
+            general.textContent = message;
+            form.appendChild(general);
+        }
+    }
 }
