@@ -20,7 +20,7 @@ export function renderLoginPage(root: HTMLElement) {
         <span id="password-error" class="error"></span>
       </label>
 
-      <label>
+      <label class="checkbox">
         <input type="checkbox" id="toggle-password" /> Show password
       </label>
 
@@ -76,6 +76,6 @@ export function renderLoginPage(root: HTMLElement) {
   });
 
   toRegistrationBtn.addEventListener('click', () => {
-    location.hash = '#/registration';
+    location.hash = '#/register';
   });
 }
