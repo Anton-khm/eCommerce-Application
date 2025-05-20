@@ -107,3 +107,25 @@ input.invalid {
     flex-direction: column;
     max-width: 240px;
 }
+
+.success {
+    color: green;
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+.login-redirect {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+.login-redirect a {
+    color: #0066cc;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login-redirect a:hover {
+    text-decoration: underline;
+}
