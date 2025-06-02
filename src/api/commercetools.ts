@@ -101,3 +101,35 @@ export async function loginCustomer(email: string, password: string): Promise<an
 
     return data;
 }
+
+export async function getProductList(): Promise<any[]> {
+    const token = await getAccessTokenClientCredentials();
+
+    const response = await fetch(`${API_HOST}/${PROJECT_KEY}/product-projections/search`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+    });
+
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message || 'Failed to fetch products');
+    return data.results || [];
+}
+
+export async function getProductById(productId: string): Promise<any> {
+    const token = await getAccessTokenClientCredentials();
+
+    const response = await fetch(`${API_HOST}/${PROJECT_KEY}/product-projections/${productId}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+    });
+
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message || 'Failed to fetch product details');
+    return data;
+}
