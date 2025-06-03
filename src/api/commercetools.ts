@@ -1,6 +1,6 @@
 const PROJECT_KEY = 'ecomm25';
-const CLIENT_ID = 'ZYsj4Vcrf-UVbT9Unjup62Zq';
-const CLIENT_SECRET = 'fnWmoSnPKdd7qlPHKLze0jKa7TDbDHOX';
+const CLIENT_ID = 'qzT-_OAnZS6bwE0OLMxMFL4K';
+const CLIENT_SECRET = '5xEai8ATn9Xxs5ZKS-voqNbI5OJpSfME';
 const AUTH_HOST = 'https://auth.europe-west1.gcp.commercetools.com';
 const API_HOST = 'https://api.europe-west1.gcp.commercetools.com';
 const SCOPE = `manage_customers:${PROJECT_KEY} view_published_products:${PROJECT_KEY} manage_my_orders:${PROJECT_KEY} manage_my_profile:${PROJECT_KEY}`;
@@ -114,8 +114,27 @@ export async function getProductList(): Promise<any[]> {
     });
 
     const data = await response.json();
-    if (!response.ok) throw new Error(data.message || 'Failed to fetch products');
-    return data.results || [];
+
+    if (!response.ok) {
+        throw new Error(data.message || 'Failed to fetch products');
+    }
+
+    return data.results.map((product: any) => {
+        const variant = product.masterVariant;
+
+        const priceData = variant?.prices?.[0]?.value;
+        const price = priceData ? (priceData.centAmount / 100).toFixed(2) : 'N/A';
+        const image = variant?.images?.[0]?.url;
+
+        return {
+            id: product.id,
+            name: product.name?.en || 'Unnamed product',
+            description: product.description?.en || '',
+            image: image || null,
+            originalPrice: price,
+            discountedPrice: null
+        };
+    });
 }
 
 export async function getProductById(productId: string): Promise<any> {

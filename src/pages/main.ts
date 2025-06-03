@@ -1,16 +1,29 @@
+import { logoutCustomer } from '../state/auth';
+
 export function renderMainPage(root: HTMLElement) {
-    root.innerHTML = `
-    <h1>Welcome to the Main Page</h1>
-    <p>Some content here...</p>
-    <a href="#/catalog" style="
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background-color: #007bff;
-      color: white;
-      border-radius: 4px;
-      text-decoration: none;
-      cursor: pointer;
-    ">Каталог</a>
+  root.innerHTML = `
+    <h2>Добро пожаловать!</h2>
+    <p>Это главная страница приложения.</p>
+    <a href="#/catalog">📦 Перейти в каталог</a>
   `;
+
+  const logoutButton = document.createElement('button');
+  logoutButton.textContent = 'Выйти';
+  logoutButton.style.cssText = `
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #d9534f;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  `;
+
+  logoutButton.addEventListener('click', () => {
+    logoutCustomer();
+  });
+
+  root.appendChild(logoutButton);
 }

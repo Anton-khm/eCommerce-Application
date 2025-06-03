@@ -1,8 +1,10 @@
 import { getProductList } from '../api/commercetools';
+import { router } from '../router/router';
 
 export async function renderCatalogPage(root: HTMLElement) {
     root.innerHTML = `
     <h2>Product Catalog</h2>
+    <a href="#/" style="padding: 0.5rem 1rem; background: #007bff; color: #fff; text-decoration: none; border-radius: 4px; width: 90px; ">На главную</a>
     <div id="product-list" class="product-list" style="
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -69,6 +71,7 @@ export async function renderCatalogPage(root: HTMLElement) {
                 }
             }
         });
+
     } catch (err) {
         container!.innerHTML = '<p class="error">⚠️ Failed to load products. Please try again later.</p>';
         console.error(err);

@@ -6,6 +6,12 @@ import { renderProductDetailsPage } from '../pages/productDetails';
 
 export function router(root: HTMLElement) {
     const route = location.hash;
+    const isAuthenticated = !!localStorage.getItem('authToken');
+
+    if (!isAuthenticated && route !== '#/login' && route !== '#/register') {
+        location.hash = '#/login';
+        return;
+    }
 
     if (route === '#/login') {
         renderLoginPage(root);
