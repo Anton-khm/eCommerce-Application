@@ -5,8 +5,8 @@ module.exports = {
     entry: "./src/index.ts",
     output: {
         filename: "bundle.js",
-        path: path.resolve(__dirname, "docs"),
-        publicPath: "./",
+        path: path.resolve(__dirname, "dist"),
+        // publicPath: "./",
         clean: true,
     },
     resolve: {
@@ -32,7 +32,7 @@ module.exports = {
         }),
     ],
     devServer: {
-        static: "./docs",
+        static: "./dist",
         port: 3000,
         open: true,
     },

@@ -1,5 +1,5 @@
 {
-  "homepage": "https://anton-khm.github.io/eCommerce-Application/",
+  "homepage": "https://anton-khm.github.io/eCommerce-Application",
   "scripts": {
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",

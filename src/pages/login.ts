@@ -5,9 +5,8 @@ import { router } from '../router/router';
 
 export function renderLoginPage(root: HTMLElement) {
   if (isAuthenticated()) {
-    if (location.hash !== '#/main') {
-      location.replace('#/main');
-    }
+    console.log('🔒 Already authenticated, redirecting to /main');
+    location.hash = '#/main';
     return;
   }
 
@@ -65,9 +64,16 @@ export function renderLoginPage(root: HTMLElement) {
       try {
         const data = await loginCustomer(emailInput.value, passwordInput.value);
         setToken(data.access_token);
+        console.log('🟢 Token saved:', data.access_token);
         location.hash = '#/main';
-        return;
-        // location.hash = '#/main';
+        // if (location.hash !== '#/main') {
+        //   location.hash = '#/main';
+        // } else {
+        //   const root = document.getElementById('app');
+        //   if (root) router(root);
+        // }
+
+        // // Или гарантированно принудительно:
         // setTimeout(() => {
         //   const root = document.getElementById('app');
         //   if (root) router(root);

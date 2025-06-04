@@ -1,6 +1,7 @@
 import { logoutCustomer } from '../state/auth';
 
 export function renderMainPage(root: HTMLElement) {
+  console.log('✅ renderMainPage CALLED');
   root.innerHTML = `
     <h2>Добро пожаловать!</h2>
     <p>Это главная страница приложения.</p>
