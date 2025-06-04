@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-      "outDir": "./dist",
+      "outDir": "docs",
       "module": "ESNext",
       "target": "ES6",
       "strict": true,
