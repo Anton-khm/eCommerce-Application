@@ -3,7 +3,7 @@ import { loginCustomer } from '../api/commercetools';
 import { setToken, isAuthenticated } from '../state/auth';
 
 export function renderLoginPage(root: HTMLElement) {
-  if (isAuthenticated()) {
+  if (isAuthenticated() && location.hash !== '#/main') {
     location.hash = '#/main';
     return;
   }
