@@ -4,8 +4,10 @@ import { setToken, isAuthenticated } from '../state/auth';
 import { router } from '../router/router';
 
 export function renderLoginPage(root: HTMLElement) {
-  if (isAuthenticated() && location.hash !== '#/main') {
-    location.hash = '#/main';
+  if (isAuthenticated()) {
+    if (location.hash !== '#/main') {
+      location.replace('#/main');
+    }
     return;
   }
 
@@ -64,10 +66,12 @@ export function renderLoginPage(root: HTMLElement) {
         const data = await loginCustomer(emailInput.value, passwordInput.value);
         setToken(data.access_token);
         location.hash = '#/main';
-        setTimeout(() => {
-          const root = document.getElementById('app');
-          if (root) router(root);
-        }, 0);
+        return;
+        // location.hash = '#/main';
+        // setTimeout(() => {
+        //   const root = document.getElementById('app');
+        //   if (root) router(root);
+        // }, 0);
       } catch (err: any) {
         emailError.textContent = 'Invalid email or password';
         passwordError.textContent = '';

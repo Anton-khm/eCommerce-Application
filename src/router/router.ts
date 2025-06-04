@@ -9,9 +9,7 @@ export function router(root: HTMLElement) {
     const isAuthenticated = !!localStorage.getItem('authToken');
 
     if (!isAuthenticated && route !== '#/login' && route !== '#/register') {
-        if (location.hash !== '#/login') {
-            location.hash = '#/login';
-        }
+        location.replace('#/login');
         return;
     }
 
@@ -37,9 +35,7 @@ export function router(root: HTMLElement) {
                     root.innerHTML = '<p class="error">⚠️ Invalid product ID.</p>';
                 }
             } else {
-                if (location.hash !== '#/login') {
-                    location.hash = '#/login';
-                }
+                location.replace('#/login');
             }
             break;
     }

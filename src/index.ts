@@ -11,13 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     router(app);
 
-    let lastRoute = '';
-
-    // window.addEventListener('hashchange', () => {
-    //     router(app);
-    // });
     window.addEventListener('hashchange', () => {
-        const root = document.getElementById('app');
-        if (root) router(root);
+        router(app);
     });
 });
