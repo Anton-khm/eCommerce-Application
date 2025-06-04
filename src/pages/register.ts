@@ -16,7 +16,7 @@ export function renderRegisterPage(root: HTMLElement) {
     <label>Street: <input type="text" id="street" /></label><span class="error" id="street-error"></span>
     <label>City: <input type="text" id="city" /></label><span class="error" id="city-error"></span>
     <label>Postal Code: <input type="text" id="postalCode" /></label><span class="error" id="postalCode-error"></span>
-    <label>Country: <input type="text" id="country" /></label><span class="error" id="country-error"></span>
+    <label>Country (use "CA"): <input type="text" id="country" /></label><span class="error" id="country-error"></span>
         </div>
         </div>
       <button type="submit" class="login-btn">Register</button>
