@@ -1,6 +1,7 @@
 import { validateEmail, validatePassword } from '../utils/validators';
 import { loginCustomer } from '../api/commercetools';
 import { setToken, isAuthenticated } from '../state/auth';
+import { router } from '../router/router';
 
 export function renderLoginPage(root: HTMLElement) {
   if (isAuthenticated() && location.hash !== '#/main') {
@@ -63,6 +64,10 @@ export function renderLoginPage(root: HTMLElement) {
         const data = await loginCustomer(emailInput.value, passwordInput.value);
         setToken(data.access_token);
         location.hash = '#/main';
+        setTimeout(() => {
+          const root = document.getElementById('app');
+          if (root) router(root);
+        }, 0);
       } catch (err: any) {
         emailError.textContent = 'Invalid email or password';
         passwordError.textContent = '';

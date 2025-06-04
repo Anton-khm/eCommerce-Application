@@ -1,18 +1,6 @@
 import { router } from './router/router';
 import './styles.css';
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     const app = document.createElement('div');
-//     app.id = 'app';
-//     document.body.appendChild(app);
-
-//     router(app);
-
-//     window.addEventListener('hashchange', () => {
-//         router(app);
-//     });
-// });
-
 document.addEventListener('DOMContentLoaded', () => {
     let app = document.getElementById('app') as HTMLElement;
     if (!app) {
@@ -23,7 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     router(app);
 
+    let lastRoute = '';
+
+    // window.addEventListener('hashchange', () => {
+    //     router(app);
+    // });
     window.addEventListener('hashchange', () => {
-        router(app);
+        const root = document.getElementById('app');
+        if (root) router(root);
     });
 });
