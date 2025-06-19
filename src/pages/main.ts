@@ -3,13 +3,13 @@ import { logoutCustomer } from '../state/auth';
 export function renderMainPage(root: HTMLElement) {
   console.log('✅ renderMainPage CALLED');
   root.innerHTML = `
-    <h2>Добро пожаловать!</h2>
-    <p>Это главная страница приложения.</p>
-    <a href="#/catalog">📦 Перейти в каталог</a>
+    <h2>Welcome!</h2>
+    <p>This is the main page.</p>
+    <a href="#/catalog">Go to catalog</a>
   `;
 
   const logoutButton = document.createElement('button');
-  logoutButton.textContent = 'Выйти';
+  logoutButton.textContent = 'Logout';
   logoutButton.style.cssText = `
     position: absolute;
     top: 1rem;

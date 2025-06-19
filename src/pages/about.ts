@@ -5,8 +5,11 @@ export function renderAboutPage(root: HTMLElement) {
       <div class="about-content">
         <img src="https://avatars.githubusercontent.com/u/83237969?v=4" alt="Developer photo" class="about-photo" />
         <p>
-          Привет! Меня зовут Антон. Я фронтенд-разработчик, увлеченный созданием веб-приложений с хорошей архитектурой и UX.  
-          Мой GitHub: <a href="https://github.com/Anton-khm" target="_blank">github.com/Anton-khm</a>
+          Hello! My name is Anton. </p>
+          <p>I am a frontend developer, passionate about creating web applications with good architecture and UX.</p> 
+          <p>Unfortunately, due to lack of time, I did the work alone.</p>
+          <p> Thank you for understanding) </p>
+          <p>My GitHub: <a href="https://github.com/Anton-khm" target="_blank">github.com/Anton-khm</a></p>
         </p>
       </div>
       <div class="cart-nav">

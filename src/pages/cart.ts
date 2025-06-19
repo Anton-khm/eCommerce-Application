@@ -6,8 +6,8 @@ export function renderCartPage(root: HTMLElement) {
     if (cart.length === 0) {
         root.innerHTML = `
       <div class="cart-empty">
-        <h2>Ваша корзина пуста</h2>
-        <a href="#/catalog">Перейти в каталог</a>
+        <h2>Cart is empty</h2>
+        <a href="#/catalog">Go to catalog</a>
       </div>
     `;
         return;
