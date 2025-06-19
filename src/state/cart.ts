@@ -12,7 +12,7 @@ function saveCart() {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-export function getCart(): CartItem[] {
+export function getCartItems(): CartItem[] {
     return cart;
 }
 
@@ -34,4 +34,12 @@ export function removeFromCart(id: string) {
 export function clearCart() {
     cart = [];
     saveCart();
+}
+
+export function updateCartLink() {
+    const cartLink = document.getElementById('cart-link');
+    if (cartLink) {
+        const count = getCartItems().reduce((sum, item) => sum + item.quantity, 0);
+        cartLink.textContent = `Cart (${count})`;
+    }
 }

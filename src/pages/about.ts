@@ -10,6 +10,7 @@ export function renderAboutPage(root: HTMLElement) {
           <p>Unfortunately, due to lack of time, I did the work alone.</p>
           <p> Thank you for understanding) </p>
           <p>My GitHub: <a href="https://github.com/Anton-khm" target="_blank">github.com/Anton-khm</a></p>
+          <p>RSSchool: <a href="https://rs.school/" target="_blank">RSSchool</a></p>
         </p>
       </div>
       <div class="cart-nav">
