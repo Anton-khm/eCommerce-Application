@@ -3,6 +3,8 @@ import { renderMainPage } from '../pages/main';
 import { renderRegisterPage } from '../pages/register';
 import { renderCatalogPage } from '../pages/catalog';
 import { renderProductDetailsPage } from '../pages/productDetails';
+import { renderCartPage } from '../pages/cart';
+// import { renderAboutPage } from '../pages/about';
 
 export function router(root: HTMLElement) {
     const route = location.hash;
@@ -14,7 +16,12 @@ export function router(root: HTMLElement) {
         renderRegisterPage(root);
     } else if (route === '#/catalog') {
         renderCatalogPage(root);
-    } else if (route.startsWith('#/product/')) {
+    } else if (route === '#/cart') {
+        renderCartPage(root);
+    } else if (route === '#/about') {
+        renderAboutPage(root);
+    }
+    else if (route.startsWith('#/product/')) {
         const productId = route.split('/')[2];
         if (productId) {
             renderProductDetailsPage(root, productId);
