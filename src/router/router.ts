@@ -4,7 +4,7 @@ import { renderRegisterPage } from '../pages/register';
 import { renderCatalogPage } from '../pages/catalog';
 import { renderProductDetailsPage } from '../pages/productDetails';
 import { renderCartPage } from '../pages/cart';
-// import { renderAboutPage } from '../pages/about';
+import { renderAboutPage } from '../pages/about';
 
 export function router(root: HTMLElement) {
     const route = location.hash;
